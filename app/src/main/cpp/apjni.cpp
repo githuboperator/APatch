@@ -129,6 +129,12 @@ extern "C" {
         }
         const char *skey = env->GetStringUTFChars(superKey, nullptr);
         int num = sc_su_uid_nums(skey);
+        
+        if (num <= 0 || num >= 1000000) {
+            env->ReleaseStringUTFChars(superKey, skey);
+            return env->NewIntArray(0);
+        }
+        
         std::vector<int> uids(num);
 
         long n = sc_su_allow_uids(skey, (uid_t *)uids.data(), num);
