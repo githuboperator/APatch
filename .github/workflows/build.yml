@@ -3,7 +3,7 @@ name: Build Manager
 on:
   push:
     tags: [ "*" ]
-    branches: [ "main", "*-release" ]
+    branches: [ "main" ]
     paths:
       - '.github/workflows/build.yml'
       - 'app/**'
